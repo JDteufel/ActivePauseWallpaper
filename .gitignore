@@ -1,0 +1,13 @@
+# .NET build and publish output
+**/bin/
+**/obj/
+**/publish/
+
+# Visual Studio user state
+.vs/
+*.user
+*.suo
+
+# Local logs and temporary files
+*.log
+*.tmp

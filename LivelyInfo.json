@@ -1,0 +1,17 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "Active Pause Wallpaper",
+  "Thumbnail": "thumbnail.jpg",
+  "Preview": "preview.gif",
+  "Desc": "Audio spectrum that reacts with system sound",
+  "Author": "JDthanak (Juan Gómez)",
+  "License": "MIT",
+  "Contact": "https://github.com/JDteufel",
+  "Type": 2,
+  "FileName": "index.html",
+  "Arguments": "--system-nowplaying --system-information",
+  "IsAbsolutePath": false,
+  "Id": null,
+  "Tags": null,
+  "Version": 0
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Active Pause Wallpaper</title>
+    <style media="screen">
+      body{
+        margin:0;
+        overflow:hidden;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      }
+
+      #track-container {
+        opacity: 0;
+        position: absolute;
+        top: 13%;
+        right: 25%;
+        transform: translateY(-50%);
+        text-align: left;
+        z-index: 1;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding: 10px;
+        border: 2px solid #e07800;
+        background: rgba(16, 19, 24, 0.82);
+        box-shadow: 0 0 8px rgba(224, 120, 0, 0.9), inset 0 0 12px rgba(224, 120, 0, 0.2);
+        font-family: 'Bahnschrift', 'Segoe UI', sans-serif;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+
+      #left-panel {
+        position: absolute;
+        top: 13%;
+        left: 3%;
+        transform: translateY(-50%);
+        z-index: 1;
+        display: flex;
+        align-items: stretch;
+        gap: 15px;
+        pointer-events: none;
+      }
+
+      #clock-panel,
+      #system-panel {
+        min-width: 250px;
+        padding: 12px 14px;
+        border: 2px solid #e07800;
+        background: rgba(16, 19, 24, 0.82);
+        box-shadow: 0 0 8px rgba(224, 120, 0, 0.9), inset 0 0 12px rgba(224, 120, 0, 0.2);
+        color: #fff3d6;
+        font-family: 'Bahnschrift', 'Segoe UI', sans-serif;
+        pointer-events: none;
+      }
+
+      #clock-panel {
+        min-width: 520px;
+        min-height: 124px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      #pause-status {
+        margin: 0;
+        color: #fff3d6;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        line-height: 1.35;
+        text-shadow: 0 0 0.4vw #e07800;
+      }
+
+      #pause-connection {
+        margin: 4px 0 0;
+        color: #e07800;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      #pause-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 6px;
+        pointer-events: auto;
+      }
+
+      #pause-controls button {
+        padding: 5px 10px;
+        border: 2px solid #e07800;
+        background: rgba(16, 19, 24, 0.9);
+        color: #fff3d6;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        pointer-events: auto;
+      }
+
+      #pause-controls button:hover,
+      #pause-controls button:focus-visible {
+        background: #e07800;
+        color: #101318;
+        outline: none;
+      }
+
+      #system-panel {
+        position: absolute;
+        right: 3%;
+        bottom: 3%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      #clock {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        text-shadow: 0 0 0.4vw #e07800;
+      }
+
+      #date,
+      #time-context {
+        margin: 6px 0 4px;
+        color: #e07800;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        line-height: 1.25;
+        max-width: 250px;
+        text-shadow: 0 0 0.4vw currentColor;
+        text-transform: capitalize;
+      }
+
+      #time-context {
+        margin: 0 0 4px;
+        line-height: 1.25;
+        white-space: pre-line;
+        max-width: none;
+      }
+
+      .metric-chart-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #e07800;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 0.4vw currentColor;
+      }
+
+      .metric-chart-name {
+        color: #fff3d6;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        text-shadow: 0 0 0.4vw #e07800;
+      }
+
+      .metric-chart {
+        display: block;
+        width: 250px;
+        height: 38px;
+        margin: 0;
+      }
+
+      .metric-graph {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      #albumart {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #e07800;
+        border-radius: 4px;
+        box-shadow: 0 0 8px rgba(224, 120, 0, 0.8);
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      #track-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      #track-title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        color: #fff3d6;
+        text-shadow: 0 0 0.4vw #e07800;
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #track-artist {
+        margin: 4px 0 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: #e07800;
+        text-shadow: 0 0 0.4vw currentColor;
+        opacity: 1;
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <aside id="left-panel" aria-label="Clock and system status">
+      <section id="clock-panel" aria-label="Clock">
+        <p id="clock">--:--:--</p>
+        <p id="date">--</p>
+        <p id="time-context" aria-label="Historical and geological context"></p>
+        <p id="pause-status" aria-live="polite">Pause reminder: disabled</p>
+        <p id="pause-connection" aria-live="polite">Overlay is off</p>
+        <div id="pause-controls">
+          <button id="overlay-toggle" type="button">Activate</button>
+          <button id="pause-reset" type="button" disabled>Restart</button>
+          <button id="pause-toggle" type="button" disabled>Pause</button>
+          <button id="pause-take" type="button" disabled>Take a Break</button>
+        </div>
+      </section>
+    </aside>
+    <section id="system-panel" aria-label="System status">
+      <div class="metric-graph">
+        <div class="metric-chart-header">
+          <span class="metric-chart-name">CPU</span>
+          <span id="cpu-value">--</span>
+        </div>
+        <canvas id="cpu-chart" class="metric-chart" width="250" height="38" aria-label="CPU usage history"></canvas>
+      </div>
+      <div class="metric-graph">
+        <div class="metric-chart-header">
+          <span class="metric-chart-name">GPU</span>
+          <span id="gpu-value">--</span>
+        </div>
+        <canvas id="gpu-chart" class="metric-chart" width="250" height="38" aria-label="GPU usage history"></canvas>
+      </div>
+      <div class="metric-graph">
+        <div class="metric-chart-header">
+          <span class="metric-chart-name">RAM</span>
+          <span id="ram-value">--</span>
+        </div>
+        <canvas id="ram-chart" class="metric-chart" width="250" height="38" aria-label="RAM usage history"></canvas>
+      </div>
+    </section>
+
+    <!-- Track Info Display -->
+    <div id="track-container">
+      <img id="albumart" alt="Album art" />
+      <div id="track-info">
+        <h2 id="track-title">-</h2>
+        <h3 id="track-artist">-</h3>
+      </div>
+    </div>
+
+    <canvas id="canvas" width="300" height="300" aria-label="Audio visualizer"></canvas>
+    <script src="wallpaper-view.js" charset="utf-8"></script>
+    <script src="viz.js" charset="utf-8"></script>
+    <script src="overlay-client.js" charset="utf-8"></script>
+    <script src="pause-view.js" charset="utf-8"></script>
+    <script src="pause-reminder.js" charset="utf-8"></script>
+  </body>
+</html>

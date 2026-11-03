@@ -1,0 +1,64 @@
+{
+  "language": {
+    "text": "Language",
+    "type": "dropdown",
+    "value": 0,
+    "help": "Language used for wallpaper and pause overlay text.",
+    "items": [
+      "English",
+      "Español",
+      "中文（简体）",
+      "Français",
+      "العربية",
+      "Português (Brasil)",
+      "Русский",
+      "Deutsch",
+      "日本語",
+      "Türkçe",
+      "한국어",
+      "Italiano"
+    ]
+  },
+  "lineColor": {
+    "text": "Line Color",
+    "type": "color",
+    "value": "#E07800"
+  },
+  "backgroundColor": {
+    "text": "Background Color",
+    "type": "color",
+    "value": "#000000"
+  },
+  "square": {
+    "type": "checkbox",
+    "value": true,
+    "text": "Square Wave"
+  },
+  "audioSensitivity": {
+    "type": "slider",
+    "min": 1,
+    "max": 20,
+    "step": 0.1,
+    "value": 5,
+    "text": "Audio Sensitivity"
+  },
+  "pauseReminderEnabled": {
+    "type": "checkbox",
+    "value": true,
+    "text": "Pause Reminder"
+  },
+  "pauseSchedule": {
+    "type": "dropdown",
+    "value": 1,
+    "text": "Pause Schedule",
+    "help": "Suggested rest intervals. They are not medical advice.",
+    "items": [
+      "20 minutes active / 2-minute break",
+      "30 minutes active / 5-minute break",
+      "45 minutes active / 5-minute break",
+      "50 minutes active / 10-minute break",
+      "90 minutes active / 15-minute break",
+      "TEST: 30 seconds active / 5-second break"
+    ]
+  }
+}
