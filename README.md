@@ -4,6 +4,12 @@ ActivePauseWallpaper is the MVC-style version of this web-audio wallpaper for [L
 
 The JavaScript is separated into Lively callback adapters, views, and controller/client code. The existing timer State pattern is retained. The separation improves responsibility boundaries, but no runtime performance gain is claimed without Lively measurements.
 
+## Preview
+
+![ActivePauseWallpaper thumbnail](thumbnail.jpg)
+
+![ActivePauseWallpaper animated preview](preview.gif)
+
 ## License
 
 ActivePauseWallpaper is licensed under the MIT License; see [LICENSE](./LICENSE). The adapted audio visualizer implementation has its own MIT attribution in [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md). Third-party media and artwork retain their respective rights and permissions.
